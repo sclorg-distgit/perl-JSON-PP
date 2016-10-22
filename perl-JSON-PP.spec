@@ -2,14 +2,12 @@
 
 Name:		%{?scl_prefix}perl-JSON-PP
 Version:	2.27400
-Release:	6%{?dist}
+Release:	4%{?dist}
 Summary:	JSON::XS compatible pure-Perl module
 License:	GPL+ or Artistic
 Group:		Development/Libraries
 URL:		http://search.cpan.org/dist/JSON-PP/
 Source0:	http://search.cpan.org/CPAN/authors/id/M/MA/MAKAMAKA/JSON-PP-%{version}.tar.gz
-# Avoid loading optional modules from default . (CVE-2016-1238)
-Patch0:		JSON-PP-2.27400-CVE-2016-1238-avoid-loading-optional-modules-from-de.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(id -nu)
 BuildArch:	noarch
 # Module Build
@@ -66,7 +64,6 @@ JSON::PP is a pure-Perl module and is compatible with JSON::XS.
 
 %prep
 %setup -q -n JSON-PP-%{version}
-%patch0 -p1
 
 %build
 %{?scl:scl enable %{scl} '}perl Makefile.PL INSTALLDIRS=vendor && make %{?_smp_mflags}%{?scl:'}
@@ -92,12 +89,6 @@ rm -rf %{buildroot}
 %{_mandir}/man3/JSON::PP::Boolean.3*
 
 %changelog
-* Tue Aug 02 2016 Jitka Plesnikova <jplesnik@redhat.com> - 2.27400-6
-- Avoid loading optional modules from default . (CVE-2016-1238)
-
-* Sun Jul 24 2016 Petr Pisar <ppisar@redhat.com> - 2.27400-5
-- Rebuild without bootstrap
-
 * Mon Jul 11 2016 Petr Pisar <ppisar@redhat.com> - 2.27400-4
 - SCL
 
