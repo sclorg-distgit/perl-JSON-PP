@@ -2,7 +2,7 @@
 
 Name:		%{?scl_prefix}perl-JSON-PP
 Version:	2.27400
-Release:	4%{?dist}
+Release:	5%{?dist}
 Summary:	JSON::XS compatible pure-Perl module
 License:	GPL+ or Artistic
 Group:		Development/Libraries
@@ -89,6 +89,9 @@ rm -rf %{buildroot}
 %{_mandir}/man3/JSON::PP::Boolean.3*
 
 %changelog
+* Sun Jul 24 2016 Petr Pisar <ppisar@redhat.com> - 2.27400-5
+- Rebuild without bootstrap
+
 * Mon Jul 11 2016 Petr Pisar <ppisar@redhat.com> - 2.27400-4
 - SCL
 
